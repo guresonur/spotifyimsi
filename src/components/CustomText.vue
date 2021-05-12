@@ -16,7 +16,7 @@ export default {
             type: String,
             default: 'normal',
             validator: function(value) {
-        return ['normal', 'small', 'xsmall', 'xxsmall'].indexOf(value) !== -1
+        return ['normal', 'small', 'xsmall', 'xxsmall', 'large'].indexOf(value) !== -1
       }
         }
     }
@@ -36,6 +36,9 @@ font-size: 10px;
 }
 .xxsmall {
 font-size: 8px;
+}
+.large {
+    font-size: 18;
 }
 
 </style>

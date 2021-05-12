@@ -2,7 +2,10 @@
 
   <div class="footer">
 
-    <div class="albumPhoto">buraya foto</div>
+    <div class="albumPhoto">
+      <img :src="album_photo"  alt="Album image">
+      <!--<CustomText tag='h1' > {{ this.album_photo }} </CustomText>-->
+    </div>
 
     <div class="listening">  
 <CustomText tag='h1'> {{ this.current_track_name}} </CustomText>
@@ -19,7 +22,8 @@
   <path d="M5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3z"/>
 </svg>
 
-<b-button variant="success" @click="startFollowing">Start</b-button>
+<b-button v-if="!started" variant="success" @click="startFollowing">Start</b-button>
+<b-button v-else variant="success" @click="stopFollowing">Stop</b-button>
 
 </div>
 
@@ -35,7 +39,10 @@ export default {
   name: 'Footer',
   data() {
     return {
-       current_track_name: null
+       current_track_name: null,
+       album_photo: null,
+       temp_album_photo: null,
+       started: null,
     }
   },
   components: {
@@ -45,11 +52,12 @@ export default {
      currentTrack () {
         fetch('https://api.spotify.com/v1/me/player', {
           headers: {
-            'Authorization': `Bearer ` + this.payload
+            'Authorization': `Bearer ` + this.$store.state.payload
           }
         }).then(response => {
           return response.json()
         }).then(data => {
+            this.temp_album_photo = data.item.album.images[2].url
             this.previousTrackName = this.current_track_name;
             this.current_track_name = data.item.name + ' - '
             if (data.item.artists.length>1) {
@@ -69,7 +77,7 @@ export default {
         })
         fetch('https://api.spotify.com/v1/artists/'+this.artist_id,  {
           headers: {
-            'Authorization': `Bearer ` + this.payload
+            'Authorization': `Bearer ` + this.$store.state.payload
           }
         })
             .then(response => {
@@ -78,15 +86,15 @@ export default {
             .then(data => {
               this.genre = data.genres[0]
             })
-        }
-  },
-  startFollowing () {
+        },
+        startFollowing () {
             this.started = true;
 
             setInterval(() => {
               if(this.started) {
               this.currentTrack();
               if (this.current_track_name != null && this.current_track_name != this.previousTrackName) {
+              this.album_photo = this.temp_album_photo
               this.currentTrackList.push(this.current_track_name)
               if (this.current_track_name in this.tracksList) {
                   this.tracksList[this.current_track_name] += 1
@@ -108,7 +116,15 @@ export default {
               }
             }, 1000);
 
+        },
+        stopFollowing () {
+          this.started = false;
         }
+  },
+  mounted() {
+    this.started = false;
+  }
+  
 }
 </script>
 
@@ -132,7 +148,6 @@ export default {
   margin-left: auto;
     margin-right: auto;
   display: flex;
-  border-style: dashed ;
 }
 
 .buttons {
@@ -140,13 +155,13 @@ export default {
   margin-left: auto;
     margin-right: auto;
     border-style: dashed ;
+    align-items: center;
 }
 
 .listening {
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  border-style: dashed ;
   
 }
 

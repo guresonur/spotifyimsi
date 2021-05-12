@@ -29,19 +29,19 @@ export default {
     },
     methods: {
       getLikedTracks() {
-        fetch('https://api.spotify.com/v1/me/top/tracks?limit=5', {
+        fetch('https://api.spotify.com/v1/me/top/tracks?limit=10', {
           headers: {
             'Authorization': `Bearer ` + this.$store.state.payload
           }
         }).then(response => {
           return response.json()
         }).then(data => {
-          for (let index = 0; index < 5; index++) {
+          for (let index = 0; index < 10; index++) {
             //console.log(data.items[index].artists[0].external_urls.spotify)
             
                 this.tempArtistName = data.items[index].artists[0].name;
                 this.tempTrackName = data.items[index].name;
-                this.tempAlbumPhoto = data.items[index].album.images[2].url;
+                this.tempAlbumPhoto = data.items[index].album.images[1].url;
                 this.tempArtistLink =  data.items[index].artists[0].external_urls.spotify;
             
             this.likedTracks.push({
