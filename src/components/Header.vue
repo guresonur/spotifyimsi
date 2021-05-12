@@ -41,7 +41,7 @@ export default {
   name: 'Header',
 data() {
     return {
-      client_id: 'CLIENT_ID',
+      client_id: '821e61dd7fda4f70a421c9fdba582349',
       scopes: 'user-read-playback-state',
       redirect_uri: 'http://localhost:8080/',
       me: null,
