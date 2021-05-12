@@ -66,7 +66,6 @@ export default {
           tempTrackName : null,
           tempAlbumPhoto : null ,
           tempArtistLink : null,
-          likedTracks: []
     }
     
 },

@@ -42,7 +42,7 @@ export default {
 data() {
     return {
       client_id: '821e61dd7fda4f70a421c9fdba582349',
-      scopes: 'user-read-playback-state user-library-read user-read-recently-played',
+      scopes: 'user-read-playback-state user-library-read user-read-recently-played playlist-read-private',
       redirect_uri: 'http://localhost:8080/',
       me: null,
       current_track_name: null,
