@@ -8,6 +8,7 @@
 import CustomText from '@/components/CustomText.vue'
 
 export default {
+    
     components: {
         CustomText
     }

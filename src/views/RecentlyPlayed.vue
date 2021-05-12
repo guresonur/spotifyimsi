@@ -1,20 +1,35 @@
 <template>
-  <div>
-      <CustomText tag='h1'>this is Recently Played</CustomText>
+  <div class="cards-parent">
+       <TrackCard v-for="track in recentTracks" v-bind:key="track"> </TrackCard>   
+        
   </div>
 </template>
 
 <script>
 
-import CustomText from '@/components/CustomText.vue'
+import TrackCard from '@/components/TrackCard.vue'
 
 export default {
     components: {
-        CustomText
+        TrackCard,
+    } ,
+    
+    data () {
+        return {
+        recentTracks: ['Ekrem', 'Onur', 'Gures', 'Emel', 'Erdeniz', 'Taylan', 'Ozan', 'Galatasaray', 'Cimbom', 'Ekrem', 'Onur', 'Gures', 'Emel', 'Erdeniz', 'Taylan']
     }
+    
+},
+
 }
 </script>
 
 <style scoped>
+
+
+
+.cards-parent {
+    margin: 10px;
+}
 
 </style>
