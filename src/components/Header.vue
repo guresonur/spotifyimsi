@@ -24,7 +24,7 @@
 
 <div class="right-menu">
      <b-button v-if="!loggedIn" variant="success" @click="login()">Login</b-button>  
-<button v-if="loggedIn" class="btn dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown">
+<button v-if="loggedIn" class="btn dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" style="color:white;">
           <b-img v-if="loggedIn" :src="profile_pic" rounded="circle" alt="Profile Pic" height="30px" width="30px" fluid></b-img>
           {{profile_name}}
           </button>
@@ -69,7 +69,6 @@ data() {
         this.loggedIn = true;
         this.payload = payload;
         popup.close()
-        console.log(this.payload)
         this.$store.state.payload = this.payload;
         fetch('https://api.spotify.com/v1/me', {
           headers: {
@@ -109,8 +108,6 @@ data() {
                 this.genres[this.genre] = 1
               }
               }
-              console.log(this.genres)
-              console.log(this.tracksList)
 
 
               }
@@ -180,6 +177,7 @@ data() {
     align-items: center;
     padding-top: 20px;
     padding-bottom: 20px;
+    background-color: #121212;
 }
 
 .custom-button {
@@ -187,6 +185,7 @@ data() {
         
   border-radius: 0.25rem;
   align-content: center;
+  color: black;
 }
 
 .profile {
@@ -207,7 +206,7 @@ data() {
     
     margin-left: auto;
     margin-right: auto;
-
+    color: black;
 
 
 }
@@ -220,8 +219,7 @@ data() {
 }
 
 .header {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
+   
 }
 
 .header-logo {

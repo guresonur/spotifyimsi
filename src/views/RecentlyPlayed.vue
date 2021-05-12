@@ -2,10 +2,10 @@
   
   <div class="cards-parent">
         <div class="welcome">
-            <CustomText tag='h1' size='large' v-if="hour<12"> Good Morning </CustomText>
-            <CustomText tag='h1' size='large' v-if="hour>=12 && hour<18"> Good Afternoon </CustomText>
-            <CustomText tag='h1' size='large' v-if="hour>=18"> Good Evening </CustomText>
-            <CustomText tag='h1' size='normal'>Recently played tracks</CustomText>
+            <CustomText tag='h1' size='large' style="color: white;" v-if="hour<12"> Good Morning </CustomText>
+            <CustomText tag='h1' size='large' style="color: white;"  v-if="hour>=12 && hour<18"> Good Afternoon </CustomText>
+            <CustomText tag='h1' size='large' style="color: white;"  v-if="hour>=18"> Good Evening </CustomText>
+            <CustomText tag='h1' size='normal' style="color: white;" >Recently played tracks</CustomText>
 
         </div>
        <div class="recent-tracks">
@@ -85,7 +85,7 @@ mounted() {
 }
 
 .welcome {
-    border-style: dashed;
+
 }
 
 

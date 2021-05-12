@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     token: 0,
-    paylod: null  
+    paylod: null,
+    genres: {},
   },
   mutations: {},
   actions: {},

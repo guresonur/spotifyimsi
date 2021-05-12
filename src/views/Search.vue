@@ -74,7 +74,9 @@ export default {
 
 <style scoped>
 
-
+.search-area {
+    width: 100%;
+}
 
 
 </style>

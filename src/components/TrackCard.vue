@@ -4,7 +4,7 @@
   <div class="card-body">
     <h5 class="card-title"> {{ artistName }} </h5>
     <p class="card-text"> {{ trackName }} </p>
-    <a :href="artistLink" class="btn btn-primary">Go to artist</a>
+    <a :href="artistLink" class="btn btn-primary">Check on Spotify</a>
   </div>
 </div>
 </template>

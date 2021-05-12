@@ -1,20 +1,25 @@
 <template>
-  <div>
-      <CustomText tag='h1'>This is Statistics</CustomText>
+  <div class="statistics"> 
+      <ul class="list-group" v-if="genres" > 
+      <li class="list-group-item" v-for="(count,genre) in genres" v-bind:key="genre"> You have listened {{count}} {{genre}} songs  </li>
+      </ul>
   </div>
 </template>
 
 <script>
 
-import CustomText from '@/components/CustomText.vue'
-
 export default {
-    components: {
-        CustomText
+    name: 'Statistics',
+    data () {
+        return {
+            genres: this.$store.state.genres,
+        }
     }
 }
 </script>
 
 <style scoped>
+.statistics {
 
+}
 </style>

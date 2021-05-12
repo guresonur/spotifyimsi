@@ -55,12 +55,14 @@ export default {
   display: flex;
   margin-left: 0;
   min-width: 25%;
-  border-right: dashed;
+  background-color: black;
   
 }
 
 .MainArea {
   display: flex;
+  background-color: #181818;
+  width: 100%;
 }
 
 .LeftPanel-Top {
@@ -87,7 +89,7 @@ ul {
 a {
   margin-left: 0%;
   display: flex;
-  color: black;
+  color: white;
 }
 
 </style>
